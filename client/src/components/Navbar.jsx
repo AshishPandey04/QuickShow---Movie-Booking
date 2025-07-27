@@ -21,6 +21,7 @@ const Navbar = () => {
         <Link to="/movies" onClick={() => { scrollTo(0,0); setisOpen(false) }} className='hover:text-primary'>Movies</Link>
         {favorites.length > 0 && <Link to="/favourites" onClick={() => { scrollTo(0,0); setisOpen(false) }} className='hover:text-primary'>Favourite</Link>}
         <Link to="/my-bookings" onClick={() => { scrollTo(0,0); setisOpen(false) }} className='hover:text-primary'>Bookings</Link>
+        {/* <Link to="/favourites" onClick={() => { scrollTo(0,0); setisOpen(false) }} className='hover:text-primary'>Favourite</Link> */}
         <Link to="/admin" onClick={() => { scrollTo(0,0); setisOpen(false) }} className='text-primary'>Dashboard</Link>
       </div>
       <div className='w-40 flex items-center justify-around'>

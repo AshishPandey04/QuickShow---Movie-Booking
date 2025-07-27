@@ -92,12 +92,12 @@ const Moviedetails = () => {
               <PlayCircleIcon className="w-5 h-5 mr-2" />
               Watch Trailer
             </a>
-            <a href="#cast" onClick={handleDate} className="px-6 pt-3 bg-primary hover:bg-primary-dull transition rounded-lg text-sm font-medium max-md:px-4">
+            <button href="#cast" onClick={handleDate} className="px-6 p-3 bg-red-500 hover:bg-red-700 transition rounded-lg text-sm font-medium max-md:px-4">
               Buy Tickets
-            </a>
-            <a className="p-3 bg-gray-600 rounded-full cursor-pointer" onClick={handlefavorite}>
-              <Heart className={`w-5 h-5 ${favorites.some(movie => movie._id === id) ? 'text-primary fill-primary' : ''}`} />
-            </a>
+            </button>
+            <button className={`p-3 bg-gray-600 rounded-full cursor-pointer  ` }onClick={handlefavorite}>
+              <Heart className={`w-5 h-5 ${favorites.find(movie => movie._id === id) ?  ' text-primary fill-primary' : ''}`}/>
+            </button>
           </div>
         </div>
       </div>
