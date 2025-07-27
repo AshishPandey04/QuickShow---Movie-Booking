@@ -82,14 +82,10 @@ A fully functional full-stack **MERN** movie ticket booking web application buil
 ![Cast&Dates](./Screenshots/Casts&Dates.png)
 ### Seat Layout Page
 ![Seat](./Screenshots/Seatlayout.png)
-### Bookings Page
-![Bookings](./Screenshots/Bookings.png)
 ### Dashboard Page
 ![Dashboard](./Screenshots/Dashboard.png)
-### List Shows Page
-![ListShows](./Screenshots/Listshows.png)
-### List Bookings Page
-![ListBookings](./Screenshots/Listbookings.png)
+
+
 ---
 
 
