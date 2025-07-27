@@ -68,31 +68,31 @@ const releaseSeatsandDeletebooking = inngest.createFunction(
 )
 
 export const cleanupOldData = inngest.createFunction(
-  { id: "cleanup-old-bookings-shows" },
-  { cron: "0 0 1 1,7 *" }, // Runs at 00:00 on Jan 1 and Jul 1
-  async ({ step }) => {
-    const sixMonthsAgo = new Date();
-    sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+    { id: "cleanup-old-bookings-shows" },
+    { cron: "0 0 1 1,7 *" }, // Runs at 00:00 on Jan 1 and Jul 1
+    async ({ step }) => {
+        const sixMonthsAgo = new Date();
+        sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
 
-    return step.run("delete-old-bookings-and-shows", async () => {
-      const deletedBookings = await Booking.deleteMany({
-        createdAt: { $lt: sixMonthsAgo },
-      });
+        return step.run("delete-old-bookings-and-shows", async () => {
+            const deletedBookings = await Booking.deleteMany({
+                createdAt: { $lt: sixMonthsAgo },
+            });
 
-      const deletedShows = await Show.deleteMany({
-        showDateTime: { $lt: sixMonthsAgo },
-      });
+            const deletedShows = await Show.deleteMany({
+                showDateTime: { $lt: sixMonthsAgo },
+            });
 
-      console.log(
-        `Deleted ${deletedBookings.deletedCount} old bookings and ${deletedShows.deletedCount} shows.`
-      );
+            console.log(
+                `Deleted ${deletedBookings.deletedCount} old bookings and ${deletedShows.deletedCount} shows.`
+            );
 
-      return {
-        deletedBookings: deletedBookings.deletedCount,
-        deletedShows: deletedShows.deletedCount,
-      };
-    });
-  }
+            return {
+                deletedBookings: deletedBookings.deletedCount,
+                deletedShows: deletedShows.deletedCount,
+            };
+        });
+    }
 );
 
 
@@ -169,7 +169,7 @@ const sendNewMovieEmail = inngest.createFunction(
         const users = await User.find({});
         const movie = await Movie.findById(movieId);
 
-        if(!movie) return "No movie found";
+        if (!movie) return "No movie found";
 
         for (const user of users) {
             const userEmail = user.email;
@@ -201,12 +201,12 @@ const sendNewMovieEmail = inngest.createFunction(
             </div>`
 
             await sendEmail({
-                to : userEmail,
+                to: userEmail,
                 subject,
                 body,
             })
         }
-        return {message : 'Notification sent'}
+        return { message: 'Notification sent' }
     }
 )
 
